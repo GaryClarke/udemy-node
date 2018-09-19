@@ -3,16 +3,20 @@ console.log('Starting app.js');
 /**************************************** Vendor packages ****************************************/
 const fs = require('fs');
 const _ = require('lodash');
+const yargs = require('yargs');
 /**************************************** User packages ****************************************/
 const notes = require('./notes');
 
+const argv = yargs.argv;
 var command = process.argv[2];
 
 console.log(`Commad: ${command}`);
+console.log('Process', process.argv);
+console.log('Yargs', argv);
 
 if (command === 'add') {
 
-    console.log('Adding new note');
+    notes.addNote(argv.title, argv.body);
 
 } else if (command === 'list') {
 
