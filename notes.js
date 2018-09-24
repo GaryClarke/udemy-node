@@ -49,13 +49,15 @@ var addNote = (title, body) => {
 
 var getAll = () => {
 
-    console.log('Getting all notes');
+    return fetchNotes();
 };
 
 
-var read = (title) => {
+var getNote = (title) => {
 
-    console.log(`Reading note: ${title}`)
+    var notes = fetchNotes();
+
+    return notes.filter((note) => note.title === title)[0];
 };
 
 
@@ -70,10 +72,19 @@ var remove = (title) => {
     return notes.length !== safeNotes.length;
 };
 
+
+var logNote = (note) => {
+
+    console.log(`--`);
+    console.log(`Title: ${note.title}`);
+    console.log(`Body: ${note.body}`);
+};
+
 module.exports = {
 
     addNote,
     getAll,
-    read,
+    getNote,
     remove,
+    logNote
 };
